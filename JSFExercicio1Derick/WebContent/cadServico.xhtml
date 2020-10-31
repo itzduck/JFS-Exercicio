@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Servicos</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Mostrar Ordem de Serviço" action="listServico.xhtml" immediate="true" />
+		<h1>Serviços</h1>
+		<h:messages />
+		
+		<h:panelGrid columns="2">
+			<h:outputText value="Cliente: *" />
+			<h:inputText value="#{servicoControllerDerick.servico.cliente}"
+				required="true"
+				requiredMessage="O campo cliente é obrigtório!">
+				<f:validateLength minimum="2" maximum="30" />
+			</h:inputText>
+			<h:outputText value="Servico: *" />
+			<h:inputText value="#{servicoControllerDerick.servico.servico}"
+				required="true"
+				requiredMessage="O campo Servico é obrigtório!">
+				<f:validateLength minimum="1" maximum="30" />
+			</h:inputText>	
+			<h:outputText value="Quantidade: *" />
+			<h:inputText value="#{servicoControllerDerick.servico.quantidade}"
+				required="true"
+				requiredMessage="O campo quantidade é obrigatório!">
+				<f:validateLongRange minimum="1" />
+			</h:inputText>
+			<h:outputText value="Valo Unt: *" />
+			<h:inputText value="#{servicoControllerDerick.servico.valor}"
+				required="true"
+				requiredMessage="O campo valor unitário é obrigátorio!">
+				<f:validateDoubleRange minimum="1"  maximum="500"/>
+			</h:inputText>
+			<h:outputText value="Data de Exc: *" />
+			<h:inputText value="#{servicoControllerDerick.servico.dataCadastro}"
+				required="true"
+				requiredMessage="O campo data de execução do serviço é obrigatório!">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>	
+			<h:commandButton value="Salvar" action="#{servicoControllerDerick.salvar}" />
+			
+		</h:panelGrid>
+	</h:form>
+</h:body>
+
+</html>
