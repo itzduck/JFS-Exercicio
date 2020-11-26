@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<h:head>
+	<title>Lista de Exames</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Cadastro de Exames" action="cadExam.xhtml"
+			immediate="true" />
+		<h1>Lista de Exames</h1>
+		<h:messages />
+
+		<h:dataTable border="1" value="#{examControllerDerick.lista}"
+			var="exame">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{exame.id}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Paciente" />
+				</f:facet>
+				<h:outputText value="#{exame.paciente}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Procedimento" />
+				</f:facet>
+				<h:outputText value="#{exame.procedimento}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Quantidader" />
+				</f:facet>
+				<h:outputText value="#{exame.quantidade}">
+				</h:outputText>
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor" />
+				</f:facet>
+				<h:outputText value="#{exame.valor}">
+				</h:outputText>
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data incial" />
+				</f:facet>
+				<h:outputText value="#{exame.data_inicio}">
+					<f:convertDateTime pattern="dd/MM/yyyy"
+						timeZone="America/Sao_Paulo" />
+				</h:outputText>
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Fim" />
+				</f:facet>
+				<h:outputText value="#{exame.data_fim}">
+					<f:convertDateTime pattern="dd/MM/yyyy"
+						timeZone="America/Sao_Paulo" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor total" />
+				</f:facet>
+				<h:outputText value="#{exame.valortotal}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ação" />
+				</f:facet>
+
+				<h:commandButton value="Editar"
+					action="#{examControllerDerick.editar}">
+					<f:setPropertyActionListener value="#{exame}"
+						target="#{examControllerDerick.exame}" />
+
+
+				</h:commandButton>
+				<h:commandButton value="Excluir"
+					action="#{examControllerDerick.excluir}">
+					<f:setPropertyActionListener value="#{exame}"
+						target="#{examControllerDerick.exame}" />
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+
+</html>
+
+

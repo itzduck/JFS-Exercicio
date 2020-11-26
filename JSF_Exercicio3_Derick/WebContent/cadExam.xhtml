@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Exames</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Lista de Exames" action="listExam.xhtml"
+			immediate="true" />
+
+		<h1>Cadastro de Exames</h1>
+		<h:messages />
+		<h:panelGrid columns="2">
+
+
+			<h:outputText value="Procedimento: *" />
+			<h:inputText value="#{examControllerDerick.exame.procedimento}"
+				required="true"
+				requiredMessage="[O campo Procedimento é Obrigadorio]"/>
+			
+			<h:outputText value="Data Inicio: *" />
+			<h:inputText value="#{examControllerDerick.exame.data_inicio}"
+				required="true"
+				requiredMessage="[O campo Data Inicio é Obrigadorio]">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>
+			
+			
+			<h:outputText value="Data Fim: *" />
+			<h:inputText value="#{examControllerDerick.exame.data_fim}"
+				required="true" requiredMessage="[O campo Data Fim é Obrigadorio]">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>
+			
+				
+			<h:outputText value="Nome Paciente: *" />
+			<h:inputText value="#{examControllerDerick.exame.paciente}"
+				required="true" requiredMessage="[O campo Nome é Obrigadorio]" >
+			<f:validateLength maximum="30" />
+			</h:inputText>
+
+			<h:outputText value="Quantidade: *" />
+			<h:inputText value="#{examControllerDerick.exame.quantidade}"
+				required="true" requiredMessage="[O campo Nome é Obrigadorio]">
+				<f:validateLongRange minimum="2" maximum="100" />
+			</h:inputText>
+
+			<h:outputText value="Valor do procedimento: *" />
+			<h:inputText value="#{examControllerDerick.exame.valor}"
+				required="true" requiredMessage="[O campo Valor é Obrigadorio]">
+				<f:validateDoubleRange minimum="1" maximum="9000" />
+			</h:inputText>
+
+		
+
+			<h:commandButton value="Salvar"
+				action="#{examControllerDerick.Salvar}" />
+			<h:commandButton value="Limpar" action="cadExam.xhtml"
+				actionListener="#{examControllerDerick.limparCampos}"
+				immediate="true" />
+
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
